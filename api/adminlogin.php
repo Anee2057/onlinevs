@@ -17,7 +17,7 @@
     {
     echo '<script>
        alert("Welcome Admin");
-       window.location = "../routes/admin.php";
+       window.location = "../routes/adminboard.php";
        </script>';
     }
     else{

@@ -23,7 +23,7 @@ $('#form2').submit(function(e) {
     const pass = $('#pass').val()
     const add = $('#add').val()
     const age = $('#age').val()
-    if (grecaptcha.getResponse() == "" || !mob || !pass || mob=='' || pass==''|| mob.length!=10 || !add || !age || add==''||age=='') {
+    if (grecaptcha.getResponse() == "" || !mob || !pass || mob=='' || pass==''|| mob.length!=10 || pass.length<6||!add || !age || add==''||age=='') {
         e.preventDefault()
         validateForm(mob,pass,add,age)
 
@@ -43,10 +43,7 @@ function validateForm(mob,pass,add,age){
         mobErr.text('Please enter your mobile number')
     }
     
-    if(!pass || pass==''){
-        passErr.text('Please enter your password')
-    }
-
+   
     if(pass.length<6){
         passErr.text('Password must be atleast length 6!')
     }
