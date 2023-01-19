@@ -1,20 +1,33 @@
 <?php
-if(isset($_POST))
-{
-   $name = $_POST['name'];
-   $mobile = $_POST['mob'];
-   $pass = $_POST['pass'];
-   $cpass = $_POST['cpass'];
-   $add = $_POST['add'];
-   $age = $_POST['age'];
-   $gender = $_POST['gender'];
-   $image = $_FILES['image']['name'];
+ 
+ //include("connection.php");
+ $servername = "localhost";
+ $username = "root";
+ $password = "";
+ $database = "online-voting-system";
+ $connect = mysqli_connect($servername, $username, $password, $database);
+ 
+ if (isset($_GET['updatevoter'])) {
+   $id = $_GET['id'];
+   $name = $_GET['name'];
+   $mobile = $_GET['mobile'];
+   $add = $_GET['address'];
+   $age = $_GET['age'];
+   $gender = $_GET['gender'];
+   
+   $pass = $_GET['password'];
+  // $hash = password_hash($pass,PASSWORD_DEFAULT); 
+   $cpass = $_GET['cpass'];
+   
+ 
+   ///$image = $_FILES['image']['name'];
    //$tmp_name = $_FILES['image']['tmp_name'];
-
-   $sql = "UPDATE 'user' SET  'name' = '$name', 'mobile' = '$mobile', 'password'= '$pass', 'address'='$add', 'age'= '$age','gender'= '$gender', 'photo'= '$image'";
-
-   $result = $connect->query($sql);
-}
-
-
-?>
+  
+  
+   mysqli_query($connect, " UPDATE user SET name='$name',mobile='$mobile',address = '$add',age = 'age',gender = $gender , password='$pass', where id=$id ");
+  
+   
+ }
+ header('location: ./admin.php');
+ ?>
+ 

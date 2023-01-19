@@ -1,40 +1,18 @@
 <?php
 include '../api/connection.php';
+?>
 
-
- /*if(isset($_POST['edit']))
- {
-    /*$name = $_POST['name'];
-    $mobile = $_POST['mob'];
-    $pass = $_POST['pass'];
-    $cpass = $_POST['cpass'];
-    $add = $_POST['add'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-    $image = $_FILES['image']['name'];
-    $tmp_name = $_FILES['image']['tmp_name'];
-
-    $sql = "UPDATE 'user' SET  'name' = '$name', 'mobile' = '$mobile', 'password'= '$pass', 'address'='$add', 'age'= '$age','gender'= '$gender', 'photo'= '$image'";
-
-    $result = $connect->query($sql);
-
-    if($result)
-    {
-        echo "Updated successfully";
-
-    }
-    else
-    {
-        echo "Error: ".$sql . " < br > " .$connect -> error;
-    }*/
- //}
+ 
+ <html>
+    <body>
+        <?php
 if (isset($_GET['id'])) {
     //
     $id = $_GET['id'];
     $sql = "SELECT * FROM user WHERE id=$id";
 
-    $result = mysqli_query($connect, $sql); //$connect->query($sql);
-
+    $result = mysqli_query($connect, $sql);?> 
+<?php 
     if (mysqli_num_rows($result) > 0) //$result -> num_rows) > 0
     {
         while ($row = $result->fetch_assoc()) {
@@ -47,12 +25,12 @@ if (isset($_GET['id'])) {
             $img = $row['photo'];
 
 
-        }
-        ?>
-        <h2>User update form</h2>
-            <form action="updatevoter.php" method="post">
-                <fieldset><h3>Registration</h3>
+        }?>
         
+        <h2>User update form</h2>
+            <form action="./updatevoter.php" method="post">
+                <fieldset><h3>Registration</h3>
+                   <input type = "hidden",name = "id"  value="<?php echo $id;?>">
                     <input type="text" name="name" placeholder="Name" value="<?php echo $name;?>" required>&nbsp
                    <!-- <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>-->
@@ -74,17 +52,17 @@ if (isset($_GET['id'])) {
                             <option value="O">LGBTQIA+</option>
                         </select>
                     </div><BR>
-                    <div id="upload" style="width: 100%">
+                    <!--<div id="upload" style="width: 100%">
                         Upload image: <input type="file" id="profile" name="image" required  value="<?php echo $img;?>" >
                     </div><br>
-                   <!-- <div id="upload" style="width: 95%">
+                   <div id="upload" style="width: 95%">
                         Select your role:
                         <select name="role">
                             <option value="1">Voter</option>
                             <option value="2">Group</option>
                         </select><br>  -->                 
                     </div><br>
-                    <button id="loginbtn" type="submit" name="updateVoter">Update</button><br><br>
+                    <button id="loginbtn" type="submit" name="updatevoter">Update</button><br><br>
                </fieldset>
             </form>
         
