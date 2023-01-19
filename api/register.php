@@ -32,14 +32,17 @@ if (strlen($mobile) != 10) {
     window.location = '../';
     </script>";
 } else {
+
     if ($cpass != $pass) {
         echo '<script>
                 alert("Passwords do not match!");
                 window.location = "../routes/register.php";
             </script>';
     } else {
+
         move_uploaded_file($tmp_name, "../uploads/$image");
-        $insert = mysqli_query($connect, "insert into user (name, mobile, password, address,age,gender, photo, status, votes) values('$name', '$mobile', '$pass', '$add', '$age','$gender','$image', 0, 0) ");
+
+        $insert = mysqli_query($connect, "INSERT INTO user (name, mobile, password, address,age,gender, photo, status, votes, role) VALUES('$name', '$mobile', '$pass', '$add', '$age','$gender','$image', 0, 0,0) ");
         if ($insert) {
             echo '<script>
                     alert("Registration successfull!");
@@ -48,11 +51,3 @@ if (strlen($mobile) != 10) {
         }
     }
 }
-
-?>
-<html>
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<!-- Register Js file -->
-<script src="../assets/js/register.js"></script>
-
-</html>

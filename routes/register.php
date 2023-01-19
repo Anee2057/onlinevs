@@ -14,85 +14,89 @@
 </head>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
- <div style="display: flex; justify-content: space-between;flex-direction:row-reverse;">
+<div style="display: flex; justify-content: space-between;flex-direction:row-reverse;">
     <div>Already user?<a href="../" class="style">Login here</a></div>
 </div>
 
 <body>
     <center>
-    <div class="login-box1">
-        <form action="../api/register.php" class="was-validated" id="form2" method="POST" enctype="multipart/form-data" style="margin-top:30px;">
-            <h3>Registration</h3>
-            <div>
-            
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="number" name="mob" id="mob" placeholder="Mobile"  required>
-            <span class="mob-error text-danger"></span>
-        </div><br>
-            <div>
-            <input type="password" name="pass"  id=" pass" placeholder="Password" required>
-            <span class="pass-error text-danger"></span>&nbsp;
+        <div class="login-box1">
+            <form action="../api/register.php" class="was-validated" id="form2" method="POST" enctype="multipart/form-data" style="margin-top:30px;">
+                <h3>Registration</h3>
+                <!-- <div>
 
-            <input type="password" name="cpass" placeholder=" Confirm Password" required id="eye">
-            <i class="far fa-eye" id="togglePass" style="margin-left: -30px; cursor: pointer;"></i></div><br>
-            <div>
-            <input type="text" id="add" name="add"  placeholder=" Address" required>
-            <span class="add-error text-danger"></span>&nbsp;
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <span class="mob-error text-danger d-inline-block"></span>
+                    <input type="number" name="mob" id="mob" placeholder="Mobile" required>
+                    <span class="mob-error text-danger d-inline-block"></span>
+                </div><br>
+                <div>
+                    <input type="password" name="pass" id="pass" placeholder="Password" required>
+                    <span class="pass-error text-danger d-inline-block"></span>&nbsp;
 
-            <input type="number" id="age" name="age" placeholder=" Enter age" required>
-            <span class="age-error text-danger"></span></div><br>
+                    <input type="password" name="cpass" placeholder="Confirm Password" required id="eye">
+                    <i class="far fa-eye" id="togglePass d-block" style="margin-left: -30px; cursor: pointer;"></i>
+                </div><br>
+                <div>
+                    <input type="text" id="add" name="add" placeholder=" Address" required>
+                    <span class="add-error text-danger d-block"></span>&nbsp;
 
-            <div style="width:50% ;">
-                Select your gender:
-                <select style="width:80;" name="gender" id="gender">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                    <option value="O">LGBTQIA+</option>
-                </select>
-            </div><br>
-            <div style="width: 100%">
-                Upload image:<br> <input type="file" id="upload" name="image" required>
-            </div><br>
+                    <input type="number" id="age" name="age" placeholder=" Enter age" required>
+                    <span class="age-error text-danger d-block"></span>
+                </div><br> -->
+
+                <div class="form row w-50 justify-content-center">
+                    <div class="col-md-6 py-1 px-0">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-md-6 py-1 px-0">
+                        <input type="number" name="mob" id="mob" placeholder="Mobile" required>
+                        <span class="mob-error text-danger d-inline-block"></span>
+                    </div>
+                    <div class="col-md-6 py-1 px-0">
+                        <input type="password" name="pass" id="pass" placeholder="Password" required>
+                        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+                        <span class="pass-error text-danger d-inline-block"></span>
+
+                    </div>
+                    <div class="col-md-6 py-1 px-0">
+                        <input type="password" name="cpass" id="cpass" placeholder="Confirm Password" required>
+                        <i class="far fa-eye" id="ctogglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+                    </div>
+                    <div class="col-md-6 py-1 px-0">
+                        <input type="text" id="add" name="add" placeholder=" Address" required>
+                        <span class="add-error text-danger d-inline-block"></span>
+                    </div>
+                    <div class="col-md-6 py-1 px-0">
+                        <input type="number" id="age" name="age" placeholder="Enter age" required>
+                        <span class="age-error text-danger d-inline-block"></span>
+                    </div>
+                </div>
+
+                <div style="width:50% ;" class="pt-2">
+                    Select your gender:
+                    <select style="width:80;" name="gender" id="gender">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">LGBTQIA+</option>
+                    </select>
+                </div><br>
+                <div style="width: 100%">
+                    Upload image:<br> <input type="file" id="upload" name="image" required>
+                </div><br>
 
 
-            <div class="g-recaptcha" data-sitekey="6LflOtYjAAAAAA5h9Q4b0uxir84QAUkk45w1uQBA"></div>
-            <p class="captacha-error text-danger"></p>
-            <button id="loginbtn" type="submit" name="registerbtn">Register</button><br><br>
+                <div class="g-recaptcha" data-sitekey="6LflOtYjAAAAAA5h9Q4b0uxir84QAUkk45w1uQBA"></div>
+                <p class="captacha-error text-dange d-block"></p>
+                <button id="loginbtn" type="submit" name="registerbtn">Register</button><br><br>
 
 
-        </form>
-    </div>
+            </form>
+        </div>
     </center>
-
-    <script>
-        const togglePassword = document.querySelector('#togglePass');
-        const password = document.querySelector('#eye');
-
-        togglePassword.addEventListener('click', function(e) {
-            // toggle the type attribute
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            // toggle the eye slash icon
-            this.classList.toggle('fa-eye-slash');
-        });
-    </script>
-    <script>
-        const togglePassword = document.querySelector('#toggle');
-        const password = document.querySelector('#eyes');
-
-        togglePassword.addEventListener('click', function(e) {
-            // toggle the type attribute
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            // toggle the eye slash icon
-            this.classList.toggle('fa-eye-slash');
-        });
-    </script>
-
-
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <!-- Login Js file -->
-    <script src="../assets/js/reg.js"></script>
+    <script src="../assets/js/register.js"></script>
 
 </body>
 

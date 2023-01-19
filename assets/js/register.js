@@ -23,7 +23,7 @@ $('#form2').submit(function(e) {
     const pass = $('#pass').val()
     const add = $('#add').val()
     const age = $('#age').val()
-    if (grecaptcha.getResponse() == "" || !mob || !pass || mob=='' || pass==''|| mob.length!=10 || !add || !age || add==''||age=='') {
+    if (grecaptcha.getResponse() == "" || !mob || !pass || mob=='' || pass==''|| pass.length<6 || mob.length!=10 || !add || !age || add==''||age=='') {
         e.preventDefault()
         validateForm(mob,pass,add,age)
 
